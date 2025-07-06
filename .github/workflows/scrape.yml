@@ -2,8 +2,8 @@ name: Daily eBay Scraper
 
 on:
   schedule:
-    - cron: "0 12 * * *"  # Runs every day at 12:00 UTC
-  workflow_dispatch:       # Allows manual run
+    - cron: "0 12 * * *"
+  workflow_dispatch:
 
 jobs:
   scrape:
