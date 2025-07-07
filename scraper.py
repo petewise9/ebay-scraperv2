@@ -5,7 +5,7 @@ from datetime import datetime
 
 def scrape_ebay():
     url = "https://www.ebay.com/sch/i.html"
-    query = 'Fossil Gengar PSA 10'
+    query = 'Fossil Gengar'
     query_words = query.lower().split()
 
     params = {
