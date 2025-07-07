@@ -70,16 +70,22 @@ def save_to_csv(filtered_df, filename="gengar_scrapes.csv"):
     filtered_df['Scraped Date'] = datetime.today().strftime('%Y-%m-%d')
     try:
         existing_df = pd.read_csv(filename)
+        before = len(existing_df)
         combined = pd.concat([existing_df, filtered_df])
         combined.drop_duplicates(subset=['Link'], inplace=True)
+        after = len(combined)
         combined.to_csv(filename, index=False)
+        added = after - before
     except FileNotFoundError:
         filtered_df.to_csv(filename, index=False)
+        added = len(filtered_df)
+    return added
 
 def main():
     scraped_df = scrape_ebay()
     filtered_df = filter_items(scraped_df)
-    save_to_csv(filtered_df)
+    added = save_to_csv(filtered_df)
+    print(f"Scraped {len(scraped_df)} new listings. {added} added to the CSV.")
 
 if __name__ == "__main__":
     main()
