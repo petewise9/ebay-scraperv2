@@ -19,7 +19,7 @@ This Python scraper collects Pokemon card listings from eBay, by default targeti
 ## Usage
 
 ### Basic Usage
-The scraper automatically searches for "Fossil Gengar PSA 10" and saves results to `gengar_scrapes.csv`.
+The scraper automatically searches for "Fossil Gengar PSA 10" by default and saves results to `gengar_scrapes.csv`.
 
 ### Customizing Search
 To search for different items, modify the `query` variable:
@@ -32,7 +32,7 @@ query = 'Your Search Term Here'  # e.g., 'Charizard PSA 10'
 ### Main Functions
 
 **`scrape_ebay()`** - Core scraping function
-- Scrapes up to 20 pages of eBay results
+- Scrapes up to 20 pages of eBay results (can change page limits)
 - Extracts title, price, link, and image URL
 - Applies strict keyword matching
 
@@ -69,6 +69,7 @@ The scraper removes listings containing:
 Title,Price,Link,Image Link,Scraped Date
 Fossil Gengar Holo Pokemon Card Psa 10,$125.00,https://www.ebay.com/itm/...,https://i.ebayimg.com/...,2024-01-15
 ```
+- Currently set up to populate an existing CSV. If no csv by that name exists, then the script will create one first. 
 
 ## Configuration
 
@@ -93,8 +94,6 @@ forbidden_terms = [
 
 ## Troubleshooting
 
-**Import errors:** Install missing packages with `pip install`
-**CSV file locked:** Close Excel/CSV applications
 **Empty results:** Search query may be too specific
 
 ## Extensions
